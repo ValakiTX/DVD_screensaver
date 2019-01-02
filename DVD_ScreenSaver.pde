@@ -121,7 +121,7 @@ void draw()
   
   if(cornersHit > 0)
   {
-    text("Est. Seconds Beetween Corner Hits: " + abc(seconds), 15, 100);
+    text("Est. Seconds Between Corner Hits: " + abc(seconds), 15, 100);
   }
   else
   {
