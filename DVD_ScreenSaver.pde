@@ -13,6 +13,8 @@ PVector loc = new PVector(140,290);
 PVector pLoc = new PVector(140,190);
 PVector spd = new PVector(1,1);
 
+PImage DVD;
+
 void setup()
 {
   size(displayWidth, displayHeight);
@@ -20,6 +22,8 @@ void setup()
   frameRate(100);
   strokeWeight(2);
   stroke(255);
+  fill(255,255,255,127);
+  DVD = loadImage("DVD.jpg");
 }
 
 int abc(float a)
@@ -36,25 +40,20 @@ int abc(float a)
 
 void draw()
 {
-  translate(width - 820, 20);
+  translate(width - 840, 40);
   clear();
   
   background(0);
   
-  stroke(255,0,0);
-  fill(255, 0, 0, 127);
   rect(-20, -20, 840, 640);
   fill(0);
   rect(0, 0, 800, 600);
-  
-  stroke(0,255,0);
-  strokeWeight(1);
-  line(pLoc.x, pLoc.y, loc.x, loc.y);
   
   strokeWeight(2);
   stroke(255);
   fill(255,255,255,127);
   rect(loc.x,loc.y,sizeX,sizeY);
+  image(DVD,loc.x,loc.y,sizeX,sizeY);
   
   
   loc.add(spd);
@@ -115,16 +114,23 @@ void draw()
   }
   
   fill(255);
-  text("Seconds From Start: " + int(secsFromBeginning), 15, 25);
-  text("Edges Hit: " + edgesHit, 15, 50);
-  text("Corners Hit: " + cornersHit, 15, 75);
   
+  text("Seconds From Start:", -300, 25);
+  text(int(secsFromBeginning), -300, 40);
+  
+  text("Edges Hit:", -300, 70);
+  text(edgesHit, -300, 90);
+  
+  text("Corners Hit:", -300, 120);
+  text(cornersHit, -300, 140);
+  
+  text("Est. Seconds Between Corner Hits:", -300, 170);
   if(cornersHit > 0)
   {
-    text("Est. Seconds Between Corner Hits: " + abc(seconds), 15, 100);
+    text(abc(seconds), -300, 190);
   }
   else
   {
-    text("Est. Seconds Beetween Corner Hits: ---", 15, 100);
+    text("---", -300, 190);
   }
 }
